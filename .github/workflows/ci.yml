@@ -9,37 +9,36 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     services:
       mysql:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: osouji_baby_step_test
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.3.0
         bundler-cache: true
-    
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
         cache: 'yarn'
-    
+
     - name: Install dependencies
       run: |
         bundle install
         yarn install
-    
+
     - name: Setup database
       env:
         RAILS_ENV: test
@@ -48,12 +47,11 @@ jobs:
         DATABASE_PASSWORD: password
         DATABASE_NAME: osouji_baby_step_test
       run: |
-        bin/rails db:create
-        bin/rails db:migrate
-    
+        bin/rails db:prepare
+
     - name: Run lint
       run: bundle exec rubocop
-    
+
     - name: Run tests
       env:
         RAILS_ENV: test
