@@ -56,4 +56,3 @@ CSV.foreach(csv_path, headers: true) do |row|
 end
 
 puts "Tasks seeded from CSV!"
-
