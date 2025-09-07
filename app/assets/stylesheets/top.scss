@@ -6,7 +6,6 @@
   align-items: flex-start;
   justify-content: center;
   padding: 0 20px;
-}
 
   .top-container {
     background: white;
@@ -15,7 +14,6 @@
     width: 100%;
     min-height: 100vh;       // 画面の高さいっぱい
     align-items: flex-start;
-  }
 
     .logo {
       max-width: 430px;
@@ -95,30 +93,29 @@
       100% { opacity: 1 }
     }
 
-        // テキストのスタイル設定
-  p {
-    color: #383838;         // 文字色（グレー系）
-    font-size: 1.2rem;        // 文字サイズ（大きめ）
-    line-height: 1.8;         // 行間
-    margin-bottom: 20px;      // 段落間の余白
-    font-weight: 400;         // 文字の太さ
-    text-align: center;
-  }
+          // テキストのスタイル設定
+    p {
+      color: #383838;         // 文字色（グレー系）
+      font-size: 1.2rem;        // 文字サイズ（大きめ）
+      line-height: 1.8;         // 行間
+      margin-bottom: 20px;      // 段落間の余白
+      font-weight: 500;         // 文字の太さ
+      text-align: center;
+    }
 
-
-  .gacha-btn {
-    background: #FFF9A4;
-    border: none;
-    border-radius: 50px;
-    padding: 16px 32px;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #6D6D6D;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    top: 0px;
-    overflow: hidden;
+    .gacha-btn {
+      background: #FFF9A4;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #6D6D6D;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      top: 0px;
+      overflow: hidden;
 
       // ホバー効果
       &:hover {
@@ -129,7 +126,9 @@
       .btn-text {
         // テキスト変更はJavaScriptで制御
       }
+    }
   }
+}
 
 .modal {
   position: fixed;
@@ -210,6 +209,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.gacha-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.gacha-icon {
+  font-size: 4rem; 
 }
 
 .button-container {

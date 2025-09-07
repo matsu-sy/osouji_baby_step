@@ -21,9 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
   gachaBtn.addEventListener('mouseleave', function() {
     btnText.textContent = 'お掃除する？';
   });
+  // ガチャボタンクリック
   gachaBtn.addEventListener('click', function() {
     const modal = document.getElementById('modal');
     modal.classList.add('show');
+
+    drawGacha();
   });
 
 // 閉じるボタン
@@ -39,39 +42,46 @@ completionBtn.addEventListener('click', function() {
   showAchievementScreen();
 });
 
+  function drawGacha() {
+  fetch('/gacha/draw', {  // URLも修正（gachas → gacha）
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }
+  })
 
+      .then(response => response.json())
+      .then(data => {
+        displayGachaResult(data);
+      });
+  }
+
+  function displayGachaResult(data) {
+    const titleElement = document.getElementById('gacha-result-title');
+    const iconElement = document.getElementById('gacha-result-icon');
+
+    if (titleElement) {
+      titleElement.textContent = data.title;
+    }
+
+    if (iconElement) {
+      iconElement.textContent = data.icon;
+    }
+
+  }
+   // 🎯 ガチャ画面を表示
   function showGachaScreen() {
     if (gachaScreen && achievementScreen) {
       gachaScreen.style.display = 'block';
-      gachaScreen.style.opacity = '1';
-      gachaScreen.style.transform = 'translateX(0)';
-
       achievementScreen.style.display = 'none';
-      achievementScreen.style.opacity = '0';
-      achievementScreen.style.transform = 'translateX(100%)';
     }
   }
 
-  //  達成画面を表示する関数
+  //  達成画面を表示
   function showAchievementScreen() {
 
-    if (gachaScreen && achievementScreen) {
-      // ガチャ画面をフェードアウト
-      gachaScreen.style.opacity = '0';
-      gachaScreen.style.transform = 'translateX(-100%)';
-
-      setTimeout(() => {
-        gachaScreen.style.display = 'none';
-        achievementScreen.style.display = 'block';
-        achievementScreen.style.opacity = '0';
-        achievementScreen.style.transform = 'translateX(100%)';
-
-        // 達成画面をフェードイン
-        setTimeout(() => {
-          achievementScreen.style.opacity = '1';
-          achievementScreen.style.transform = 'translateX(0)';
-        }, 50);
-      }, 300);
-    }
+      gachaScreen.style.display = 'none';
+      achievementScreen.style.display = 'block';
   }
 });
