@@ -1,0 +1,231 @@
+.top-wrapper {
+  width: 100%;
+  min-height: 100vh;      // 最小高さを画面全体に
+  background: #ACC7FA;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 20px;
+  }
+
+  .top-container {
+    background: white;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    min-height: 100vh;       // 画面の高さいっぱい
+    align-items: flex-start;
+    }
+
+    .logo {
+      max-width: 430px;
+      width: 100%;
+      height: auto;
+      margin:30px 10px;
+      }
+
+        // テキストのスタイル設定
+  p {
+    color: #383838;         // 文字色（グレー系）
+    font-size: 1.2rem;        // 文字サイズ（大きめ）
+    line-height: 1.8;         // 行間
+    margin-bottom: 20px;      // 段落間の余白
+    font-weight: 400;         // 文字の太さ
+    text-align: center;
+    }
+
+
+    .gacha-btn {
+        background: #FFF9A4;
+        border: none;
+        border-radius: 50px;
+        padding: 16px 32px;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #6D6D6D;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        top: 30px;
+        overflow: hidden;
+
+      // ホバー効果
+      &:hover {
+        background: #FFED00;
+        color: #383838;
+        transform: translateY(-2px);
+      }
+          .btn-text {
+      // テキスト変更はJavaScriptで制御
+      }
+    }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0.33;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 480px;
+  max-height: 80vh;
+  border: solid #ACC7FA;
+  border-width: 5px;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.btn-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  font-size: 1.5rem;
+  color: #6D6D6D;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.btn-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-close::before {
+  content: "×";
+  font-size: 1.8rem;
+}
+
+.modal-screen {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.modal-body {
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.gacha-result {
+  margin-bottom: 30px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Xで宣言ボタン */
+.btn-x_link {
+  background: black;
+  color: white;
+  border: none;
+  width: 140px;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-x_link:hover {
+  background: #383838;
+  transform: translateY(-1px);
+}
+
+.btn-x_link::before {
+  content: "𝕏";
+  font-size: 1.1rem;
+}
+
+/* 完了ボタン */
+.btn-completion {
+  background: #ACC7FA 0%;
+  color: #383838;
+  border: none;
+  width: 140px;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-completion:hover {
+  background:  #699BF7;
+  color: white;
+  transform: translateY(-1px);
+}
+
+
+.achievement-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.achievement-logo {
+  max-width: 300px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+  animation: bounceIn 0.8s ease;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    margin: 0 10px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-link,
+  .btn-completion {
+    width: 100%;
+    justify-content: center;
+  }
+}

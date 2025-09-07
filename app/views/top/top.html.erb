@@ -1,0 +1,45 @@
+<div class="top-wrapper">
+  <div class="top-container">
+      <!-- ロゴ画像を配置 -->
+    <%= image_tag "logo/osouji_logo.png", alt: "お掃除ベイビーステップ", class: "logo" %>
+
+    <p>掃除しなきゃ。<br>でも、面倒くさい・・・</p>
+    <p>そんなあなたに、<br>まずはコレだけ！を提案します</p>
+    <p>ガチャを回して<br>お掃除の第一歩！</p>
+
+        <!-- お掃除ガチャボタン -->
+    <button class="gacha-btn" id="GachaBtn">
+      <span class="btn-text">お掃除する？</span>
+    </button>
+  </div>
+</div>
+
+<!-- ガチャ結果モーダル -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button type="button" class="btn-close" aria-label="Close"></button>
+
+    <div class="modal-screen gacha-screen" id="gachaScreen">
+      <div class="modal-body">
+        <div class="gacha-result" id="gachaResult">
+        <!-- ガチャ結果がここに表示される -->
+          <h2>今日のお掃除</h2>
+
+        </div>
+
+        <div class="button-container">
+          <button type="button" class="btn-x_link">で宣言！</button>
+          <button type="button" class="btn-completion" id="completionBtn">完了！</button>
+        </div>
+      </div>
+    </div>
+
+      <div class="modal-screen achievement-screen" id="achievementScreen" style="display: none;">
+        <div class="modal-body">
+          <div class="achievement-content">
+            <%= image_tag "logo/osouji_tassei.png", alt: "達成！", class: "achievement-logo" %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
