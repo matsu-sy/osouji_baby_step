@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const completionBtn = document.getElementById('completionBtn');
   const closeBtn = document.querySelector('.btn-close');
 
+
   // ホバー効果
   gachaBtn.addEventListener('mouseenter', function() {
     btnText.textContent = 'お掃除する！';
   });
-
   gachaBtn.addEventListener('mouseleave', function() {
     btnText.textContent = 'お掃除する？';
   });
@@ -54,7 +54,6 @@ completionBtn.addEventListener('click', function() {
 
   //  達成画面を表示する関数
   function showAchievementScreen() {
-    console.log('達成画面を表示します'); // デバッグ用
 
     if (gachaScreen && achievementScreen) {
       // ガチャ画面をフェードアウト
@@ -71,7 +70,6 @@ completionBtn.addEventListener('click', function() {
         setTimeout(() => {
           achievementScreen.style.opacity = '1';
           achievementScreen.style.transform = 'translateX(0)';
-          console.log('達成画面の表示完了'); // デバッグ用
         }, 50);
       }, 300);
     }
