@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 次回のために画面をリセット
     setTimeout(() => {
       showGachaScreen();
-    }, 300);
+    }, 200);
   });
 
 completionBtn.addEventListener('click', function() {
@@ -43,7 +43,7 @@ completionBtn.addEventListener('click', function() {
 });
 
   function drawGacha() {
-  fetch('/gacha/draw', {  // URLも修正（gachas → gacha）
+  fetch('/gacha/draw', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -58,18 +58,18 @@ completionBtn.addEventListener('click', function() {
   }
 
   function displayGachaResult(data) {
-    const titleElement = document.getElementById('gacha-result-title');
-    const iconElement = document.getElementById('gacha-result-icon');
+  // タイトル表示
+  document.getElementById('gacha-result-title').innerHTML = data.title;
 
-    if (titleElement) {
-      titleElement.textContent = data.title;
-    }
+  // デバッグ用：受信したデータを確認
+  console.log('Received title:', data.title);
+  console.log('Title element:', document.getElementById('gacha-result-title'));
 
-    if (iconElement) {
-      iconElement.textContent = data.icon;
-    }
-
+  // アイコン画像表示
+  const iconDiv = document.getElementById('gacha-result-icon');
+  iconDiv.innerHTML = `<img src="${data.icon_url}" alt="${data.icon}" class="gacha-icon">`;
   }
+
    // 🎯 ガチャ画面を表示
   function showGachaScreen() {
     if (gachaScreen && achievementScreen) {
