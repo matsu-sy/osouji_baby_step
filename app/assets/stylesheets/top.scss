@@ -216,8 +216,10 @@
   color: #333;
 }
 
-.gacha-icon {
-  font-size: 4rem; 
+.gacha-icon img {
+  width: 15vw;      // ビューポート幅の15%
+  max-height: 70px;
+  width: auto;
 }
 
 .button-container {
