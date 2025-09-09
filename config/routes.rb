@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # アプリケーションのルート
   root 'top#top'
   post 'gacha/draw', to: 'gacha#draw'
-
+  get 'gacha/:id/share', to: 'gacha#share', as: 'gacha_share'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

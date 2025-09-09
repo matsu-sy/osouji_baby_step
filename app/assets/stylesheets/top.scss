@@ -214,6 +214,8 @@
 .gacha-title {
   font-weight: bold;
   color: #333;
+  gap: 15px;
+  margin: 15px;
 }
 
 .gacha-icon img {
@@ -304,7 +306,7 @@
     gap: 10px;
   }
 
-  .btn-link,
+  .btn-x_link,
   .btn-completion {
     width: 100%;
     justify-content: center;

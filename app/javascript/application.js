@@ -7,13 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const gachaBtn = document.getElementById('GachaBtn');
   const btnText = gachaBtn.querySelector('.btn-text');
 
-  const modal = document.getElementById('modal');
-  const gachaScreen = document.getElementById('gachaScreen');
-  const achievementScreen = document.getElementById('achievementScreen');
-  const completionBtn = document.getElementById('completionBtn');
-  const closeBtn = document.querySelector('.btn-close');
-
-
   // ホバー効果
   gachaBtn.addEventListener('mouseenter', function() {
     btnText.textContent = 'お掃除する！';
@@ -29,18 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     drawGacha();
   });
 
-// 閉じるボタン
-  closeBtn.addEventListener('click', function() {
-    modal.classList.remove('show');
-    // 次回のために画面をリセット
-    setTimeout(() => {
-      showGachaScreen();
-    }, 200);
-  });
-
-completionBtn.addEventListener('click', function() {
-  showAchievementScreen();
-});
+setupModalEventListeners();
 
   function drawGacha() {
   fetch('/gacha/draw', {
@@ -50,7 +32,6 @@ completionBtn.addEventListener('click', function() {
       'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }
   })
-
       .then(response => response.json())
       .then(data => {
         displayGachaResult(data);
@@ -58,30 +39,76 @@ completionBtn.addEventListener('click', function() {
   }
 
   function displayGachaResult(data) {
-  // タイトル表示
-  document.getElementById('gacha-result-title').innerHTML = data.title;
+    const modal = document.getElementById('modal');
+    
+    // モーダル全体を動的に生成
+    modal.innerHTML = `
+      <div class="modal-content">
+        <button type="button" class="btn-close" aria-label="Close"></button>
 
-  // デバッグ用：受信したデータを確認
-  console.log('Received title:', data.title);
-  console.log('Title element:', document.getElementById('gacha-result-title'));
+        <div class="modal-screen gacha-screen" id="gachaScreen">
+          <div class="modal-body">
+            <div class="gacha-result" id="gachaResult">
+              <div class="text-center mt-4">
+                <h3 class="gacha-title">${data.title}</h3>
+                <div class="gacha-icon mb-3">
+                  <img src="${data.icon_url}" alt="${data.icon}" class="gacha-icon">
+                </div>
+              </div>
+            </div>
 
-  // アイコン画像表示
-  const iconDiv = document.getElementById('gacha-result-icon');
-  iconDiv.innerHTML = `<img src="${data.icon_url}" alt="${data.icon}" class="gacha-icon">`;
+            <div class="button-container">
+              <a href="/gacha/${data.id}/share" class="btn-x_link" target="_blank">で宣言！</a>
+              <button type="button" class="btn-completion" id="completionBtn">完了！</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-screen achievement-screen" id="achievementScreen" style="display: none;">
+          <div class="modal-body">
+            <div class="achievement-content">
+              <img src="/assets/logo/osouji_tassei.png" alt
+              <img src="/assets/logo/osouji_tassei.png" alt="達成！" class="achievement-logo">
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // 新しく生成された要素にイベントリスナーを再設定
+    setupModalEventListeners();
   }
 
-   // 🎯 ガチャ画面を表示
-  function showGachaScreen() {
-    if (gachaScreen && achievementScreen) {
-      gachaScreen.style.display = 'block';
-      achievementScreen.style.display = 'none';
+  function setupModalEventListeners() {
+    // 閉じるボタンの設定
+    const closeBtn = document.querySelector('.btn-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        const modal = document.getElementById('modal');
+        modal.classList.remove('show');
+        setTimeout(() => {
+          showScreen('gachaScreen');
+        }, 200);
+      });
+    }
+
+    // 完了ボタンの設定
+    const completionBtn = document.getElementById('completionBtn');
+    if (completionBtn) {
+      completionBtn.addEventListener('click', function() {
+        showScreen('achievementScreen');
+      });
     }
   }
 
-  //  達成画面を表示
-  function showAchievementScreen() {
+  function showScreen(activeScreenId) {
+    const screens = ['gachaScreen', 'achievementScreen'];
 
-      gachaScreen.style.display = 'none';
-      achievementScreen.style.display = 'block';
+    screens.forEach(screenId => {
+      const screen = document.getElementById(screenId);
+      if (screen) {
+        screen.style.display = screenId === activeScreenId ? 'block' : 'none';
+      }
+    });
   }
 });

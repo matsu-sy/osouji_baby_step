@@ -22,36 +22,5 @@
 
 <!-- ガチャ結果モーダル -->
 <div class="modal" id="modal">
-  <div class="modal-content">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-
-    <div class="modal-screen gacha-screen" id="gachaScreen">
-      <div class="modal-body">
-        <div class="gacha-result" id="gachaResult">
-        <!-- ガチャ結果がここに表示される -->
-         <div class="text-center mt-4">
-            <h3 id="gacha-result-title" class="gacha-title">
-              <!-- タイトルがここに表示される -->
-            </h3>
-            <div id="gacha-result-icon" class="gacha-icon mb-3">
-              <!-- アイコンがここに表示される -->
-            </div>
-          </div>
-        </div>
-
-        <div class="button-container">
-          <button type="button" class="btn-x_link">で宣言！</button>
-          <button type="button" class="btn-completion" id="completionBtn">完了！</button>
-        </div>
-      </div>
-    </div>
-
-      <div class="modal-screen achievement-screen" id="achievementScreen" style="display: none;">
-        <div class="modal-body">
-          <div class="achievement-content">
-            <%= image_tag "logo/osouji_tassei.png", alt: "達成！", class: "achievement-logo" %>
-          </div>
-        </div>
-      </div>
-  </div>
+  <!-- JavaScriptで動的に生成される -->
 </div>
