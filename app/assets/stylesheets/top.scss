@@ -16,8 +16,8 @@
     align-items: flex-start;
 
     .logo {
-      max-width: 430px;
-      width: 100%;
+      max-width: 85%;
+      width: 85%;
       height: auto;
       margin:30px 10px;
     }
@@ -40,13 +40,10 @@
       }
     }
 
-    .intro-text-4 { animation: fadeIn 0.8s ease 3.6s forwards; }
-
-    @keyframes fadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .intro-text-4 {
+    animation: none !important; // ✅ アニメーションを無効化
+    opacity: 1 !important; // ✅ 最初から表示
+    transform: translateY(0) !important; // ✅ 位置固定
     }
 
     .arrow-container {
@@ -209,13 +206,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
 .gacha-title {
   font-weight: bold;
   color: #333;
-  gap: 15px;
-  margin: 15px;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .gacha-icon img {

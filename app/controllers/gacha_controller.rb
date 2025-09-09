@@ -14,7 +14,7 @@ class GachaController < ApplicationController
   def share
   task = Task.find(params[:id])
 
-  tweet_text = "#{task.title.gsub(/[\r\n|]/, '')}を宣言！ #お掃除ガチャ #お掃除宣言"
+  tweet_text = "#{task.title.gsub(/[\r\n|]/, '')}を宣言します！ #お掃除ガチャ #お掃除宣言"
 
   app_url = request.base_url
   tweet_text += " #{app_url}"
