@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'top#top'
-  post 'gacha/draw', to: 'gacha#draw'
-  get 'gacha/:id/share', to: 'gacha#share', as: 'gacha_share'
+  root "top#top"
+  post "gacha/draw", to: "gacha#draw"
+  get "gacha/:id/share", to: "gacha#share", as: "gacha_share"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  
+
   # Chrome開発者ツール用（任意）
   get '/.well-known/appspecific/com.chrome.devtools.json', to: proc { [404, {}, ['']] }
 end
