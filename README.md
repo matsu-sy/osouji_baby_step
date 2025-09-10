@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サービス概要
 
-Things you may want to cover:
+ガチャでお掃除のファーストステップを促します。
 
-* Ruby version
+「ひとまずやった（ガチャを回した）」という達成感で安心してほしい。
 
-* System dependencies
+いつも忙しい、いつも「掃除しなきゃ…でも面倒でできない」と思っている方に向けた、お掃除の小さな一歩を提案するアプリです。
 
-* Configuration
+## 想定されるユーザー層
 
-* Database creation
+掃除が苦手な一人暮らしの方、メインで家事を行っている方
 
-* Database initialization
+## サービスコンセプト
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 心理的ハードルを抱えやすく、家事の中でも優先順位が低い「掃除」を、ゲーム感覚で始められて達成感をすぐに味わえるガチャにしました。
+- いつも見て見ぬふりしがちで、心の中では「やらなきゃ…」と思いつつ後回しにしてしまう、そんな後ろめたい気持ちを少しでも軽くできればという思いです。
+- 「お掃除の第一歩」を気軽に始められることで、小さな成功体験を積み重ねることが出来ます。
+- X投稿機能でお掃除を宣言し、アプリの中だけでなく仲間からも褒められることでモチベーションがアップし継続しやすくなります。
+- SNSで見かけた時に「この人掃除してえらい！自分もやろう！」と【お掃除の輪】が広がっていくようなサービスにしたいです。
