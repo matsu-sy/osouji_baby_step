@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Chrome開発者ツール用（任意）
-  get '/.well-known/appspecific/com.chrome.devtools.json', to: proc { [404, {}, ['']] }
+  get "/.well-known/appspecific/com.chrome.devtools.json", to: proc { [ 404, {}, [ "" ] ] }
 end
