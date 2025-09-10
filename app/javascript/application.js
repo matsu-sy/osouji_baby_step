@@ -40,7 +40,7 @@ setupModalEventListeners();
 
   function displayGachaResult(data) {
     const modal = document.getElementById('modal');
-    
+
     // モーダル全体を動的に生成
     modal.innerHTML = `
       <div class="modal-content">
