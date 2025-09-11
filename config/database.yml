@@ -50,6 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: osouji_baby_step_production
-  username: osouji_baby_step
-  password: <%= ENV["OSOUJI_BABY_STEP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
