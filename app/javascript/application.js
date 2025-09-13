@@ -40,6 +40,7 @@ setupModalEventListeners();
 
   function displayGachaResult(data) {
     const modal = document.getElementById('modal');
+    const achievementLogoPath = modal.dataset.achievementLogo;
 
     // モーダル全体を動的に生成
     modal.innerHTML = `
@@ -67,8 +68,7 @@ setupModalEventListeners();
         <div class="modal-screen achievement-screen" id="achievementScreen" style="display: none;">
           <div class="modal-body">
             <div class="achievement-content">
-              <img src="/assets/logo/osouji_tassei.png" alt
-              <img src="/assets/logo/osouji_tassei.png" alt="達成！" class="achievement-logo">
+              <img src="${achievementLogoPath}" alt="達成！" class="achievement-logo">
             </div>
           </div>
         </div>
