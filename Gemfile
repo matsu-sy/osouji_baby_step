@@ -53,7 +53,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "rubocop"
   gem "rubocop-rails"
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[ mri windows ]
 end
 
 group :development do
@@ -67,5 +67,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "bundler", "~> 2.5.22"
